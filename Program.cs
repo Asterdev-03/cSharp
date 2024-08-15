@@ -225,6 +225,18 @@ namespace CSharp
 
             /* ############################################################################################ */
 
+            /* Generic */
+
+            // Generic class can have any data type
+            Example<string> myExample = new Example<string>();    // Setting data type to String
+            myExample.exampleList = new List<string>();        // Setting data type to String
+
+            myExample.exampleList.Add("lorem ipsum");
+
+            foreach (var item in myExample.exampleList) Console.WriteLine(item);
+
+            /* ############################################################################################ */
+
             /* Abstract Class Operations */
 
             // Cannot create an instance of an abstract class
@@ -606,6 +618,12 @@ namespace CSharp
         {
             return name;
         }
+    }
+
+    // Generic Class
+    class Example<T>                                // Generic is denoted by <T>
+    {
+        public List<T> exampleList { get; set; }    // Generic List
     }
 
     /* ############################################################################################ */
