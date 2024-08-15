@@ -329,6 +329,18 @@
                 Console.WriteLine();
             }
 
+            // -------------- List Of Objects --------------
+            List<Vehicle> myVehicleList = new List<Vehicle>();
+
+            myVehicleList.Add(new Vehicle("Wagon", "1945"));
+            myVehicleList.Add(new Vehicle("Cart", "1980"));
+
+            foreach (var myVehicle in myVehicleList)
+            {
+                Console.Write($"{myVehicle.GetName()} {myVehicle.hasWheels} ");
+            }
+            Console.WriteLine();
+
             /* ############################################################################################ */
         }
 
@@ -474,6 +486,9 @@
         }
     }
 
+    /* ############################################################################################ */
+
+    /* Temporarily Used Classes */
     class ManClass { public int Age { get; set; } }
 
     /* ############################################################################################ */
