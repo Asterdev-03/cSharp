@@ -112,6 +112,26 @@
             NewFunction();
             Console.WriteLine($"{NewFunction2()} {NewFunction3(fraction)} {NewFunction4(5.2)}");
 
+            /* -------------------------------------------------------------------------------------------- */
+
+            /* Objects */
+
+            // Static functions doesn't need to create an object
+            Program.SecretFunction();                       // A way to call a non static method in same class
+
+            // Object Instantiation
+            Vehicle vehicleObj = new();                     // Creating an object of the class
+            Vehicle vehicleObj2 = new("Bus", "4-Vehicle");
+            string carName = Car.GetCarName();              // No need to create object for accesing methods for static classes
+
+            // Get Object Methods and Attributes
+            string foo = vehicleObj.Foo();
+            vehicleObj.SetName("Train");
+            bool hasWheels = vehicleObj.hasWheels;          // Can only access public values
+
+            Console.WriteLine($"{carName} {foo} {hasWheels} {vehicleObj.GetName()} {vehicleObj2.GetName()}");
+
+            /* -------------------------------------------------------------------------------------------- */
         }
 
         /* -------------------------------------------------------------------------------------------- */
@@ -150,5 +170,66 @@
 
             return newval;
         }
+
+        // Non Static Function
+        static void SecretFunction()
+        {
+            Console.WriteLine("Found secret function");
+        }
+
     }
+
+
+    /* -------------------------------------------------------------------------------------------- */
+
+    /* Custom Classes */
+
+    // Static Class
+    public static class Car
+    {
+        public static string GetCarName()
+        {
+            return "carrr";
+        }
+    }
+
+    // Default class
+    public class Vehicle
+    {
+        public bool hasWheels = true;           // public attribute
+        private string name;                    // private attribute
+        protected string type;                  // protected attribute
+
+        // Constructor
+        public Vehicle()
+        {
+            name = "";
+            type = "";
+            Console.WriteLine("Vehicle Class");
+        }
+
+        // Constructor with Paramters
+        public Vehicle(string name, string Type)
+        {
+            this.name = name;
+            type = Type;
+        }
+
+        public string Foo()
+        {
+            return "vehicle";
+        }
+
+        public void SetName(string name)
+        {
+            this.name = name;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+    }
+
+    /* -------------------------------------------------------------------------------------------- */
 }
