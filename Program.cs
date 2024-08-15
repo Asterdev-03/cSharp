@@ -2,6 +2,11 @@
 {
     class Program
     {
+
+        // NOTE: The below one line of code is not for beginners.
+        // Skip it and come back after learning C# concepts upto multithreading
+        HttpClient client = new HttpClient();           // Create an http client
+
         static async Task Main(string[] args)           // Add return type Task when using await functions
         {
             /* ############################################################################################ */
@@ -407,6 +412,12 @@
             await PrepareFood("Pizza");
 
             /* ############################################################################################ */
+
+            /* Http Client */
+            Program program = new();
+            await program.GetTodoItems();
+
+            /* ############################################################################################ */
         }
 
         /* ############################################################################################ */
@@ -458,6 +469,15 @@
             Console.WriteLine($"Preparing {foodName} ...");
             await Task.Delay(3000);                             // Waits for the process to end. Delays for 3 sec.
             Console.WriteLine($"{foodName} is Ready");
+        }
+
+        /* ############################################################################################ */
+
+        /* Http Client using API */
+        private async Task GetTodoItems()
+        {
+            string response = await client.GetStringAsync("https://jsonplaceholder.typicode.com/todos");
+            Console.WriteLine(response);
         }
 
         /* ############################################################################################ */
