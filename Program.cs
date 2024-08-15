@@ -2,7 +2,7 @@
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)           // Add return type Task when using await functions
         {
             /* ############################################################################################ */
 
@@ -400,6 +400,13 @@
             Console.WriteLine();
 
             /* ############################################################################################ */
+
+            /* Multi-Threading */
+
+            // -------------- Async - await usage --------------
+            await PrepareFood("Pizza");
+
+            /* ############################################################################################ */
         }
 
         /* ############################################################################################ */
@@ -443,6 +450,14 @@
         static void SecretFunction()
         {
             Console.WriteLine("Found secret function");
+        }
+
+        // Async Function
+        public static async Task PrepareFood(string foodName)   // Return type shoud be Task / Task like type for async functions
+        {
+            Console.WriteLine($"Preparing {foodName} ...");
+            await Task.Delay(3000);                             // Waits for the process to end. Delays for 3 sec.
+            Console.WriteLine($"{foodName} is Ready");
         }
 
         /* ############################################################################################ */
