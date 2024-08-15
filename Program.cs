@@ -368,8 +368,35 @@
 
             foreach (var item in myDict.Keys)
             {
-                Console.WriteLine($"{myDict[item]} ");
+                Console.Write($"{myDict[item]} ");
             }
+            Console.WriteLine();
+
+            /* ############################################################################################ */
+
+            /* LINQ - Language Integrated Query */
+
+            List<Book> myBooks = new List<Book>{
+                new Book() {Title = "Intermediate C++", Price=1.5},
+                new Book() {Title = "GodClass C#", Price=54.2},
+                new Book() {Title = "Advanced C#", Price=12.3},
+            };
+
+            // -------------- Without LINQ --------------
+            foreach (var book in myBooks)
+                if (book.Title.Contains("C#"))
+                    Console.Write($"{book.Title} ");
+            Console.WriteLine();
+
+            // -------------- With LINQ --------------
+            var myNewBooks = myBooks
+                .Where(book => book.Title
+                .Contains("C#"))
+                .OrderBy(book => book.Price)
+                .Select(book => book.Title);
+
+            foreach (var book in myNewBooks)
+                Console.Write($"{book} ");
             Console.WriteLine();
 
             /* ############################################################################################ */
@@ -521,6 +548,12 @@
 
     /* Temporarily Used Classes */
     class ManClass { public int Age { get; set; } }
+
+    class Book
+    {
+        public required string Title { get; set; }
+        public double Price { get; set; }
+    }
 
     /* ############################################################################################ */
 
