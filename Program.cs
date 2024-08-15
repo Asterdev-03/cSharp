@@ -314,6 +314,21 @@
                 Console.WriteLine();
             }
 
+            // -------------- Nested Lists --------------
+            List<List<int>> myTable2 = new List<List<int>>();
+            myTable2.Add(new List<int> { 11, 12, 13 });
+            myTable2.Add(new List<int> { 14, 15 });
+            myTable2.Add(new List<int> { 16, 17, 18, 19, 20 });
+
+            foreach (var list in myTable2)
+            {
+                foreach (var item in list)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
+            }
+
             /* ############################################################################################ */
         }
 
