@@ -220,8 +220,8 @@ namespace CSharp
             /* Nullable  */
 
             Nullable<int> x = null;
-            string? y = null;
-            Console.WriteLine($"Null values: {x}, {y}");
+            DateTime? y = null;
+            Console.WriteLine($"Null values: {x}, {y.GetValueOrDefault()}");
 
             /* ############################################################################################ */
 
@@ -442,7 +442,7 @@ namespace CSharp
             try
             {
                 DateTime? date = null;
-                Console.WriteLine(date.Value);          // Exception: Nullable object must have a value
+                Console.WriteLine(date.GetValueOrDefault());          // Exception: Nullable object must have a value
             }
             catch (Exception e)
             {
