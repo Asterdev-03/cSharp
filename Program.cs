@@ -143,6 +143,34 @@
             Console.WriteLine($"{vanObj.GetName()} {vanObj.NoOfWheels} {vanObj.NoOfSeats}");
 
             /* -------------------------------------------------------------------------------------------- */
+
+            /* File I/O Operations */
+
+            // File Writing through stream
+            string path = @"./test.txt";        // Use @ notation to write path in correct format as a string
+
+            if (!File.Exists(path))             // Create a file if it doesn't exist in the path
+            {
+                using (StreamWriter streamWriter = File.CreateText(path))
+                {
+                    streamWriter.WriteLine("Hello World");              // Write content to the file
+                    streamWriter.WriteLine("File created using C#");
+                }
+            }
+
+            // Opening the file
+            using (StreamReader streamReader = File.OpenText(path))
+
+            // File Reading through stream
+            {
+                string? textLine;
+
+                // Store content in each line of the file until it reaches EOF, i.e. null
+                while ((textLine = streamReader.ReadLine()) != null)
+                {
+                    Console.WriteLine(textLine);
+                }
+            }
         }
 
         /* -------------------------------------------------------------------------------------------- */
