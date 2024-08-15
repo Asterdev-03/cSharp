@@ -15,7 +15,10 @@ namespace CSharp
 
             /* Variable definition */
 
-            var hello = "hello";
+            // Implicit type variable
+            var hello = "hello";            // Can have any type of value except null
+
+            // Explicit type variable   
             string str = "banana";
             int age;
             age = 5;
@@ -23,6 +26,9 @@ namespace CSharp
             char letter = 'a';
             double fraction = 1.25;
             decimal precision = 23.445m;
+
+            // Constants
+            const int SPEED = 100;             // Implicit typed cannot be constants. It should be explicit typed
 
             /* ############################################################################################ */
 
@@ -32,7 +38,7 @@ namespace CSharp
             // var input = Console.ReadLine();
             var input = "a";
 
-            Console.WriteLine($" {hello} {input} {str} {age} {isOk} {letter} {fraction} {precision}");
+            Console.WriteLine($" {hello} {input} {str} {age} {isOk} {letter} {fraction} {precision} {SPEED}");
 
             /* ############################################################################################ */
 
@@ -119,6 +125,20 @@ namespace CSharp
 
             /* ############################################################################################ */
 
+            /* Dynamic vs Var */
+
+
+            var myVar = "byee";                 // Early binding
+            dynamic myDynamic = "hello";        // Late binding
+
+            myDynamic = 1000;                   // Can change type dynamically
+
+            // Dynamic variables is only checked during runtime
+            // Hense cannot have auto-complete properties like Length for a string
+            Console.WriteLine($"{myVar.Length} {myDynamic}");
+
+            /* ############################################################################################ */
+
             /* Functions */
 
             NewFunction();
@@ -194,6 +214,14 @@ namespace CSharp
                                                     // Since both are referencing the same memory.
 
             Console.WriteLine($"{manClass1.Age} {manClass2.Age}");
+
+            /* ############################################################################################ */
+
+            /* Nullable  */
+
+            Nullable<int> x = null;
+            string? y = null;
+            Console.WriteLine($"Null values: {x}, {y}");
 
             /* ############################################################################################ */
 
@@ -414,7 +442,7 @@ namespace CSharp
             try
             {
                 DateTime? date = null;
-                Console.WriteLine(date.Value);
+                Console.WriteLine(date.Value);          // Exception: Nullable object must have a value
             }
             catch (Exception e)
             {
@@ -426,10 +454,11 @@ namespace CSharp
             }
 
             /* ############################################################################################ */
+
             /* Multi-Threading */
 
             // -------------- Async - await usage --------------
-            // await PrepareFood("Pizza");
+            await PrepareFood("Pizza");
 
             /* ############################################################################################ */
 
