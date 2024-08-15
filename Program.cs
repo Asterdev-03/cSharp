@@ -260,7 +260,39 @@
 
             foreach (var name in myContacts) Console.WriteLine(name);
 
-            // -------------- Multi Dimensionl Arrays --------------
+            /* ############################################################################################ */
+
+            /* Multi Dimensionl Arrays */
+
+            // -------------- Cubic Array --------------
+            int[,] cube = { { 1, 2 }, { 3, 4 } };                       // 2D Array definition
+
+            // Iterate through rows in the cube. 
+            for (int list = 0; list < cube.Rank; list++)                // Rank gives no. of dimensions in the collection
+            {
+                // Iterate through columns in the cube. 
+                for (int i = 0; i < cube.GetLength(list); i++)          // Get length of the array in each dimension
+                {
+                    Console.WriteLine(cube[list, i]);
+                }
+            }
+
+            // -------------- Jagged Array --------------
+            int[][] myTable = new int[3][];                             // Define jagged Array
+            myTable[0] = new int[] { 1, 2, 3 };                         // Set values to array
+            myTable[1] = new int[] { 4, 5 };
+            myTable[2] = new int[] { 6, 7, 8, 9, 0 };
+
+            // Iterate through the array
+            for (int i = 0; i < myTable.Length; i++)
+            {
+                for (int j = 0; j < myTable[i].Length; j++)
+                {
+                    Console.WriteLine(myTable[i][j]);
+                }
+            }
+
+
 
 
             /* ############################################################################################ */
