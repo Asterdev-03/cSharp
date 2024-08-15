@@ -223,6 +223,20 @@
             playerCharacter.Shoot();
 
             /* -------------------------------------------------------------------------------------------- */
+
+            /* Arrays */
+
+            int[] myNumbers = [10, 5, 21];          // a collection of integer values
+
+            Console.WriteLine(myNumbers[3]);        // Accessing value in the array using index
+
+            for (int i = 0; i < myNumbers.Length; i++)
+                Console.WriteLine(myNumbers[i]);
+
+            foreach (int number in myNumbers)       // foreach is used to iterate through a collection
+                Console.WriteLine(number);
+
+            /* -------------------------------------------------------------------------------------------- */
         }
 
         /* -------------------------------------------------------------------------------------------- */
