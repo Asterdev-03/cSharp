@@ -228,13 +228,32 @@
 
             int[] myNumbers = [10, 5, 21];          // a collection of integer values
 
-            Console.WriteLine(myNumbers[3]);        // Accessing value in the array using index
+            Console.WriteLine(myNumbers[2]);        // Accessing value in the array using index
 
             for (int i = 0; i < myNumbers.Length; i++)
                 Console.WriteLine(myNumbers[i]);
 
             foreach (int number in myNumbers)       // foreach is used to iterate through a collection
                 Console.WriteLine(number);
+
+            /* -------------------------------------------------------------------------------------------- */
+
+            /* Lists */
+
+            List<string> myContacts = new();    // Defining a list
+
+            myContacts.Add("Edwin");
+            myContacts.Add("Anu");
+            myContacts.Add("Afreen");
+            foreach (var name in myContacts) Console.WriteLine(name);
+
+
+            myContacts.Remove("Anu");
+            myContacts.Insert(2, "Anu");
+
+            foreach (var name in myContacts) Console.WriteLine(name);
+
+            // There are many methods other than this provided by List, try them out!
 
             /* -------------------------------------------------------------------------------------------- */
         }
