@@ -106,6 +106,49 @@
             Console.WriteLine($"{precision} {fraction} {age}");
 
             /* -------------------------------------------------------------------------------------------- */
+
+            /* Functions */
+
+            NewFunction();
+            Console.WriteLine($"{NewFunction2()} {NewFunction3(fraction)} {NewFunction4(5.2)}");
+
+        }
+
+        /* -------------------------------------------------------------------------------------------- */
+
+        /* Custom Functions */
+
+        // Default
+        static void NewFunction()
+        {
+            Console.WriteLine("new fucntion");
+        }
+
+        // Default with return
+        static double NewFunction2()
+        {
+            double newval = 123.456;
+            return newval;
+        }
+
+        // Parameterized
+        static double NewFunction3(double val)
+        {
+            NewFunction();                                  // Call another function inside fucntion
+            double newval = val + 1;
+            return newval;
+        }
+
+        // Reccursion
+        static double NewFunction4(double val)
+        {
+            if (val <= 0)
+            {
+                return 1;
+            }
+            double newval = NewFunction4(val - 1);          // Call same function inside fucntion
+
+            return newval;
         }
     }
 }
