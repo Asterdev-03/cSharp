@@ -277,7 +277,6 @@
     class Van : Vehicle
     {
         private int noOfWheels;
-        private int noOfSeats;
 
         // Getter and Setter for the attributes noOfWheels using get & set keywords
         // No need to add getNoOfWheels and setNoOfWheels functions
