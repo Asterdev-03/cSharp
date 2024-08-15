@@ -61,7 +61,7 @@
                 case 15:
                     Console.WriteLine("12");
                     break;
-                case var myAge when myAge < 18:
+                case var myAge when myAge < 18:             // If you need condition in swith case
                     Console.WriteLine("Less than 18");
                     break;
                 case var myAge when myAge == 12:
@@ -415,7 +415,7 @@
 
     class Cat : IAnimal
     {
-        public void ShowName(string name)   // Must include all methods in inherited Interface. No need for override keyword
+        public void ShowName(string name)   // Must include all methods from inherited Interface. No need for override keyword
         {
             Console.WriteLine($"The Cat name is: {name}");
         }
