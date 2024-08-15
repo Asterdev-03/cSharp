@@ -21,11 +21,11 @@
 
             /* Read and Write on Console */
 
-            Console.WriteLine("Write something: ");
-            var input = Console.ReadLine();
+            Console.Write("Write something: ");
+            // var input = Console.ReadLine();
+            var input = "a";
 
-            Console.Write(input);
-            Console.WriteLine($" {hello} {str} {age} {isOk} {letter} {fraction} {precision}");
+            Console.WriteLine($" {hello} {input} {str} {age} {isOk} {letter} {fraction} {precision}");
 
             /* ############################################################################################ */
 
@@ -78,22 +78,24 @@
             // -------------- While Loop --------------
             while (age > 0)
             {
-                Console.WriteLine(age);
+                Console.Write(age + " ");
                 age -= 3;
             }
 
             // For Loop
             for (int i = 0; i < 5; i++)
             {
-                Console.Write(isOk);
+                Console.Write(isOk + " ");
             }
 
             /* ############################################################################################ */
 
             /* String Operations */
 
-            hello = "he" + "alo" + 3;               // Concatination
+            hello = "he" + "llo <" + 3;               // Concatination
             hello = $"{hello} , {str}";             // Interpolation
+
+            Console.Write($"\n{hello}\n");          // Use \n for Next Line
 
             /* ############################################################################################ */
 
@@ -241,10 +243,18 @@
             Console.WriteLine(myNumbers[2]);                // Accessing value in the array using index
 
             for (int i = 0; i < myNumbers.Length; i++)
-                Console.WriteLine(myNumbers[i]);
+            {
 
-            foreach (int number in myNumbers)               // foreach is used to iterate through a collection
-                Console.WriteLine(number);
+                Console.Write(myNumbers[i]);
+                Console.Write(" ");
+            }
+
+            foreach (int number in myNumbers)               // foreach is used to iterate through a collection 
+            {
+                Console.Write(number);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
 
 
             // -------------- Lists --------------
@@ -253,12 +263,22 @@
             myContacts.Add("Edwin");
             myContacts.Add("Anu");
             myContacts.Add("Afreen");
-            foreach (var name in myContacts) Console.WriteLine(name);
+            foreach (var name in myContacts)
+            {
+                Console.Write(name);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
 
             myContacts.Remove("Anu");
             myContacts.Insert(2, "Anu");        // There are many methods other than this provided by List, try them out!
 
-            foreach (var name in myContacts) Console.WriteLine(name);
+            foreach (var name in myContacts)
+            {
+                Console.Write(name);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
 
             /* ############################################################################################ */
 
@@ -273,8 +293,9 @@
                 // Iterate through columns in the cube. 
                 for (int i = 0; i < cube.GetLength(list); i++)          // Get length of the array in each dimension
                 {
-                    Console.WriteLine(cube[list, i]);
+                    Console.Write(cube[list, i] + " ");
                 }
+                Console.WriteLine();
             }
 
             // -------------- Jagged Array --------------
@@ -288,12 +309,10 @@
             {
                 for (int j = 0; j < myTable[i].Length; j++)
                 {
-                    Console.WriteLine(myTable[i][j]);
+                    Console.Write(myTable[i][j] + " ");
                 }
+                Console.WriteLine();
             }
-
-
-
 
             /* ############################################################################################ */
         }
@@ -305,7 +324,7 @@
         // Default
         static void NewFunction()
         {
-            Console.WriteLine("new fucntion");
+            Console.WriteLine("new function");
         }
 
         // Default with return
