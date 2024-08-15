@@ -358,6 +358,21 @@
             Console.WriteLine();
 
             /* ############################################################################################ */
+
+            /* Dictionaries */
+            Dictionary<int, string> myDict = new Dictionary<int, string>();     // Dictionary definition
+
+            myDict.Add(1, "abcd");                              // Add key value pairs
+            myDict.Add(5, "qwerty");
+            myDict.Add(9, "nji");
+
+            foreach (var item in myDict.Keys)
+            {
+                Console.WriteLine($"{myDict[item]} ");
+            }
+            Console.WriteLine();
+
+            /* ############################################################################################ */
         }
 
         /* ############################################################################################ */
