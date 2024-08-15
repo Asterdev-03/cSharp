@@ -1,4 +1,6 @@
-﻿namespace CSharp
+﻿using Newtonsoft.Json;
+
+namespace CSharp
 {
     class Program
     {
@@ -473,15 +475,6 @@
 
         /* ############################################################################################ */
 
-        /* Http Client using API */
-        private async Task GetTodoItems()
-        {
-            string response = await client.GetStringAsync("https://jsonplaceholder.typicode.com/todos");
-            Console.WriteLine(response);
-        }
-
-        /* ############################################################################################ */
-
         /* Struct in C# */
 
         struct Player
@@ -493,6 +486,27 @@
         struct ManStruct { public int Age { get; set; } }
 
         /* ############################################################################################ */
+
+        /* Http Client using API */
+
+        private async Task GetTodoItems()
+        {
+            // Get response from the site as a string
+            string response = await client.GetStringAsync("https://jsonplaceholder.typicode.com/todos");
+            // Console.WriteLine(response);
+
+            // The response is a string containing array of objects of class TODO
+            // We need to deserialize the string to a list of TODO objects
+            // It is done using JsonConverter in NewtonSoft package
+            List<TODO> todo = JsonConvert.DeserializeObject<List<TODO>>(response);
+
+            // Display title in each object
+            foreach (var item in todo) Console.Write($"{item.title} ");
+
+        }
+
+        /* ############################################################################################ */
+
     }
 
 
@@ -645,6 +659,18 @@
         {
             return "Meeoowwww";
         }
+    }
+
+    /* ############################################################################################ */
+
+    /* Http Client TODO class */
+
+    class TODO
+    {
+        public int userId { get; set; }
+        public int id { get; set; }
+        public string? title { get; set; }
+        public bool completed { get; set; }
     }
 
     /* ############################################################################################ */
