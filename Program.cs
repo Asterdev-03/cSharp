@@ -408,16 +408,34 @@ namespace CSharp
 
             /* ############################################################################################ */
 
+            /* Exception handling */
+
+            // -------------- Try Catch Finally --------------
+            try
+            {
+                DateTime? date = null;
+                Console.WriteLine(date.Value);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error Message: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Finished");
+            }
+
+            /* ############################################################################################ */
             /* Multi-Threading */
 
             // -------------- Async - await usage --------------
-            await PrepareFood("Pizza");
+            // await PrepareFood("Pizza");
 
             /* ############################################################################################ */
 
             /* Http Client */
-            Program program = new();
-            await program.GetTodoItems();
+            // Program program = new();
+            // await program.GetTodoItems();
 
             /* ############################################################################################ */
         }
