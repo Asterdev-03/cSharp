@@ -4,6 +4,8 @@
     {
         static void Main(string[] args)
         {
+            /* ############################################################################################ */
+
             /* Variable definition */
 
             var hello = "hello";
@@ -15,33 +17,34 @@
             double fraction = 1.25;
             decimal precision = 23.445m;
 
-
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
 
             /* Read and Write on Console */
 
             Console.WriteLine("Write something: ");
-            // var input = Console.ReadLine();
-            var input = "hi";
+            var input = Console.ReadLine();
+
             Console.Write(input);
             Console.WriteLine($" {hello} {str} {age} {isOk} {letter} {fraction} {precision}");
 
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
 
             /* Operators */
 
+            // -------------- Arithmetic --------------
             age = 10;
             age += 3;
             age--;
             fraction = 10 % 3;
 
+            // -------------- Logical --------------
             isOk = (age < fraction) || ((letter == 'b') && (age != 0));
 
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
 
             /* Control Flow */
 
-            // If-Else
+            // -------------- If-Else --------------
             if (isOk)
             {
                 Console.WriteLine("Do something");
@@ -55,7 +58,7 @@
                 Console.WriteLine("Dont do ");
             }
 
-            // Switch-Case
+            // -------------- Switch-Case --------------
             switch (age)
             {
                 case 15:
@@ -72,7 +75,7 @@
                     break;
             }
 
-            // While Loop
+            // -------------- While Loop --------------
             while (age > 0)
             {
                 Console.WriteLine(age);
@@ -85,56 +88,58 @@
                 Console.Write(isOk);
             }
 
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
 
             /* String Operations */
 
             hello = "he" + "alo" + 3;               // Concatination
             hello = $"{hello} , {str}";             // Interpolation
 
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
 
             /* Built- In Methods */
 
-            // Arithmetic
+            // -------------- Arithmetic --------------
             precision = Math.Floor(precision);
             fraction = Math.Pow(2, 3);
 
-            // String
+            // -------------- String --------------
             age = Convert.ToInt32("25");
 
             Console.WriteLine($"{precision} {fraction} {age}");
 
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
 
             /* Functions */
 
             NewFunction();
             Console.WriteLine($"{NewFunction2()} {NewFunction3(fraction)} {NewFunction4(5.2)}");
 
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
 
             /* Objects */
 
             // Static functions doesn't need to create an object
-            Program.SecretFunction();                       // A way to call a non static method in same class
+            Program.SecretFunction();                                       // A way to call a non static method in same class
 
-            // Object Instantiation
-            Vehicle vehicleObj = new();                     // Creating an object of the class
+
+            // -------------- Object Instantiation --------------
+            Vehicle vehicleObj = new();                                     // Creating an object of the class
             Vehicle vehicleObj2 = new("Bus", "4-Vehicle");
-            string carName = Car.GetCarName();              // No need to create object for accesing methods for static classes
+            string carName = Car.GetCarName();                              // No need to create object for accesing methods for static classes
 
-            // Get Object Methods and Attributes
+
+            // -------------- Get Object Methods and Attributes --------------
             string foo = vehicleObj.Foo();
             vehicleObj.SetName("Train");
-            bool hasWheels = vehicleObj.hasWheels;          // Can only access public values
+            bool hasWheels = vehicleObj.hasWheels;                          // Can only access public values
 
             Console.WriteLine($"{carName} {foo} {hasWheels} {vehicleObj.GetName()} {vehicleObj2.GetName()}");
 
 
             // Inherited Class Objects
             Van vanObj = new();
-            vanObj.SetName("Boro");                         // Get attribute of class Vehicle through inheritance
+            vanObj.SetName("Boro");                                         // Get attribute of class Vehicle through inheritance
 
             // Set attribute using set keyword
             vanObj.NoOfWheels = 4;
@@ -142,14 +147,68 @@
 
             Console.WriteLine($"{vanObj.GetName()} {vanObj.NoOfWheels} {vanObj.NoOfSeats}");
 
-            /* -------------------------------------------------------------------------------------------- */
+            /* ############################################################################################ */
+
+            /* Struct Data Type */
+
+            // -------------- Struct Definition --------------
+            Player player = new();
+            player.Name = "Aron";
+            Console.WriteLine($"{player.Name}");
+
+
+            // -------------- Difference b/w STRUCT and CLASS --------------
+
+            // Struct is Value type
+            // Class is Reference type
+
+            // -------------- Value type example --------------
+            ManStruct manStruct1 = new();
+            ManStruct manStruct2 = new();
+            manStruct1.Age = 10;
+            Console.WriteLine(manStruct1.Age);
+
+            manStruct2 = manStruct1;                                    // Here the value of manStruct1 is copied to manStruct2. 
+            manStruct2.Age = 20;                                        // This only changes valu of manStruct2
+            Console.WriteLine($"{manStruct1.Age} {manStruct2.Age}");
+
+
+
+            // -------------- Reference type example --------------
+            ManClass manClass1 = new();
+            ManClass manClass2 = new();
+            manClass1.Age = 10;
+            Console.WriteLine(manClass1.Age);
+
+            manClass2 = manClass1;                  // Here the reference of manStruct1 is copied to manStruct2.
+            manClass2.Age = 20;                     // Changing value of manStruct2 also affects value in manStruct1, 
+                                                    // Since both are referencing the same memory.
+
+            Console.WriteLine($"{manClass1.Age} {manClass2.Age}");
+
+            /* ############################################################################################ */
+
+            /* Abstract Class Operations */
+
+            // Cannot create an instance of an abstract class
+            // Character character = new(); 
+
+            // Instead, Create instance of class that inherits the abstract class
+            PlayerCharacter playerCharacter = new();
+            EnemyCharacter enemyCharacter = new();
+
+            playerCharacter.ShowName("lion");
+            enemyCharacter.ShowName("Bunny");
+            playerCharacter.Shoot();
+
+            /* ############################################################################################ */
 
             /* File I/O Operations */
 
-            // File Writing through stream
-            string path = @"./test.txt";        // Use @ notation to write path in correct format as a string
+            // -------------- File Writing through stream --------------
+            string path = @"./test.txt";                        // Use @ notation to write path in correct format as a string
 
-            if (!File.Exists(path))             // Create a file if it doesn't exist in the path
+            if (!File.Exists(path))                             // Create a file if it doesn't exist in the path
             {
                 using (StreamWriter streamWriter = File.CreateText(path))
                 {
@@ -158,10 +217,10 @@
                 }
             }
 
-            // Opening the file
+            // -------------- Opening the file --------------
             using (StreamReader streamReader = File.OpenText(path))
 
-            // File Reading through stream
+            // -------------- File Reading through stream --------------
             {
                 string? textLine;
 
@@ -171,94 +230,43 @@
                     Console.WriteLine(textLine);
                 }
             }
-            /* -------------------------------------------------------------------------------------------- */
 
-            /* Struct Operations */
+            /* ############################################################################################ */
 
-            Player player = new();
-            player.Name = "Aron";
-            Console.WriteLine($"{player.Name}");
+            /* Collections */
 
-            /* -------------------------------------------------------------------------------------------- */
+            // -------------- Arrays --------------
+            int[] myNumbers = [10, 5, 21];                  // a collection of integer values
 
-            /* Difference b/w struct and class */
-
-            // Struct is Value types
-            // Class is Reference types
-
-            // Value type example
-            ManStruct manStruct1 = new();
-            ManStruct manStruct2 = new();
-            manStruct1.Age = 10;
-            Console.WriteLine(manStruct1.Age);
-
-            manStruct2 = manStruct1;                // Here the value of manStruct1 is copied to manStruct2. 
-            manStruct2.Age = 20;                    // This only changes valu of manStruct2
-            Console.WriteLine($"{manStruct1.Age} {manStruct2.Age}");
-
-
-            // Reference type example
-            ManClass manClass1 = new();
-            ManClass manClass2 = new();
-            manClass1.Age = 10;
-            Console.WriteLine(manClass1.Age);
-
-            manClass2 = manClass1;                  // Here the reference of manStruct1 is copied to manStruct2.
-            manClass2.Age = 20;                     // Changing value of manStruct2 also affects value in manStruct1, since both are referencing the same memory.
-            Console.WriteLine($"{manClass1.Age} {manClass2.Age}");
-
-            /* -------------------------------------------------------------------------------------------- */
-
-            /* Abstract Class Operations */
-
-            // Cannot create an instance of an abstract class
-            // Character character = new(); 
-
-            // Instead create instance of class that inherits abstract class
-            PlayerCharacter playerCharacter = new();
-            EnemyCharacter enemyCharacter = new();
-
-            playerCharacter.ShowName("lion");
-            enemyCharacter.ShowName("Bunny");
-            playerCharacter.Shoot();
-
-            /* -------------------------------------------------------------------------------------------- */
-
-            /* Arrays */
-
-            int[] myNumbers = [10, 5, 21];          // a collection of integer values
-
-            Console.WriteLine(myNumbers[2]);        // Accessing value in the array using index
+            Console.WriteLine(myNumbers[2]);                // Accessing value in the array using index
 
             for (int i = 0; i < myNumbers.Length; i++)
                 Console.WriteLine(myNumbers[i]);
 
-            foreach (int number in myNumbers)       // foreach is used to iterate through a collection
+            foreach (int number in myNumbers)               // foreach is used to iterate through a collection
                 Console.WriteLine(number);
 
-            /* -------------------------------------------------------------------------------------------- */
 
-            /* Lists */
-
-            List<string> myContacts = new();    // Defining a list
+            // -------------- Lists --------------
+            List<string> myContacts = new();                // Defining a list
 
             myContacts.Add("Edwin");
             myContacts.Add("Anu");
             myContacts.Add("Afreen");
             foreach (var name in myContacts) Console.WriteLine(name);
 
-
             myContacts.Remove("Anu");
-            myContacts.Insert(2, "Anu");
+            myContacts.Insert(2, "Anu");        // There are many methods other than this provided by List, try them out!
 
             foreach (var name in myContacts) Console.WriteLine(name);
 
-            // There are many methods other than this provided by List, try them out!
+            // -------------- Multi Dimensionl Arrays --------------
 
-            /* -------------------------------------------------------------------------------------------- */
+
+            /* ############################################################################################ */
         }
 
-        /* -------------------------------------------------------------------------------------------- */
+        /* ############################################################################################ */
 
         /* Custom Functions */
 
@@ -301,7 +309,7 @@
             Console.WriteLine("Found secret function");
         }
 
-        /* -------------------------------------------------------------------------------------------- */
+        /* ############################################################################################ */
 
         /* Struct in C# */
 
@@ -313,11 +321,11 @@
 
         struct ManStruct { public int Age { get; set; } }
 
-        /* -------------------------------------------------------------------------------------------- */
+        /* ############################################################################################ */
     }
 
 
-    /* -------------------------------------------------------------------------------------------- */
+    /* ############################################################################################ */
 
     /* Custom Classes */
 
@@ -368,9 +376,10 @@
         }
     }
 
-    /* -------------------------------------------------------------------------------------------- */
+    /* ############################################################################################ */
 
     /* Inheritance */
+
     // Single Inheritance
     class Van : Vehicle
     {
@@ -401,11 +410,10 @@
 
     class ManClass { public int Age { get; set; } }
 
-
-    /* -------------------------------------------------------------------------------------------- */
+    /* ############################################################################################ */
 
     /* Abstract Class */
-    abstract class Character            // The class should be abstract to contain an abstract method
+    abstract class Character                        // The class should be abstract to contain an abstract method
     {
         public string bullet = "red bullet";        // Abstract class can include attributes
 
@@ -418,7 +426,7 @@
         }
     }
 
-    class PlayerCharacter : Character       // Inheriting an abstract class
+    class PlayerCharacter : Character               // Inheriting an abstract class
     {
         // Use override keyword for overriding the method content in abstract class
         public override void ShowName(string name)      // Must include all the abstract methods present in the abstract class that is inherited
@@ -427,7 +435,7 @@
         }
     }
 
-    class EnemyCharacter : Character        // Similar to above
+    class EnemyCharacter : Character                // Similar to above
     {
         public override void ShowName(string name)
         {
@@ -435,7 +443,7 @@
         }
     }
 
-    /* -------------------------------------------------------------------------------------------- */
+    /* ############################################################################################ */
 
     /* Interfaces */
 
@@ -459,5 +467,5 @@
         }
     }
 
-    /* -------------------------------------------------------------------------------------------- */
+    /* ############################################################################################ */
 }
