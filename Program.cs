@@ -342,6 +342,22 @@
             Console.WriteLine();
 
             /* ############################################################################################ */
+
+            /* Stacks */
+
+            Stack<int> myStack = new Stack<int>();                      // Stack definition
+
+            myStack.Push(5);                                            // Add item to top of stack
+            myStack.Push(2);
+            myStack.Push(4);
+            foreach (var item in myStack) Console.Write($"{item} ");
+            Console.WriteLine();
+
+            myStack.Pop();                                              // Remove top of stack item 
+            foreach (var item in myStack) Console.Write($"{item} ");
+            Console.WriteLine();
+
+            /* ############################################################################################ */
         }
 
         /* ############################################################################################ */
