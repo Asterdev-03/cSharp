@@ -208,6 +208,20 @@
             Console.WriteLine($"{manClass1.Age} {manClass2.Age}");
 
             /* -------------------------------------------------------------------------------------------- */
+
+            /* Abstract Class Operations */
+
+            // Cannot create an instance of an abstract class
+            // Character character = new(); 
+
+            // Instead create instance of class that inherits abstract class
+            PlayerCharacter playerCharacter = new();
+            EnemyCharacter enemyCharacter = new();
+
+            playerCharacter.ShowName("lion");
+            enemyCharacter.ShowName("Bunny");
+
+            /* -------------------------------------------------------------------------------------------- */
         }
 
         /* -------------------------------------------------------------------------------------------- */
@@ -353,4 +367,37 @@
 
     class ManClass { public int Age { get; set; } }
 
+
+    /* -------------------------------------------------------------------------------------------- */
+
+    /* Abstract Class */
+    abstract class Character            // The class should be abstract to contain an abstract method
+    {
+        // Abstract method only need method defenition
+        public abstract void ShowName(string name);
+
+        public void Shoot()
+        {
+            Console.WriteLine("shooting");
+        }
+    }
+
+    class PlayerCharacter : Character       // Inheriting an abstract class
+    {
+        // Use override keyword for overriding the method content in abstract class
+        public override void ShowName(string name)      // Must include all the abstract methods present in the abstract class that is inherited
+        {
+            Console.WriteLine($"The Player name is: {name}");
+        }
+    }
+
+    class EnemyCharacter : Character        // Similar to above
+    {
+        public override void ShowName(string name)
+        {
+            Console.WriteLine($"The Enemy name is: {name}");    // Each inherited class can have different content inside abstract method
+        }
+    }
+
+    /* -------------------------------------------------------------------------------------------- */
 }
