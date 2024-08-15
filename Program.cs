@@ -220,6 +220,7 @@
 
             playerCharacter.ShowName("lion");
             enemyCharacter.ShowName("Bunny");
+            playerCharacter.Shoot();
 
             /* -------------------------------------------------------------------------------------------- */
         }
@@ -373,12 +374,14 @@
     /* Abstract Class */
     abstract class Character            // The class should be abstract to contain an abstract method
     {
+        public string bullet = "red bullet";        // Abstract class can include attributes
+
         // Abstract method only need method defenition
         public abstract void ShowName(string name);
 
         public void Shoot()
         {
-            Console.WriteLine("shooting");
+            Console.WriteLine($"shooting {bullet}");
         }
     }
 
@@ -396,6 +399,30 @@
         public override void ShowName(string name)
         {
             Console.WriteLine($"The Enemy name is: {name}");    // Each inherited class can have different content inside abstract method
+        }
+    }
+
+    /* -------------------------------------------------------------------------------------------- */
+
+    /* Interfaces */
+
+    interface IAnimal
+    {
+        // int age;                         // Cannot include attributes in Interface, Only abstract methods
+        void ShowName(string name);         // All the methods in interface are abstract methods
+        public string MakeSound();
+    }
+
+    class Cat : IAnimal
+    {
+        public void ShowName(string name)   // Must include all methods in inherited Interface. No need for override keyword
+        {
+            Console.WriteLine($"The Cat name is: {name}");
+        }
+
+        public string MakeSound()
+        {
+            return "Meeoowwww";
         }
     }
 
