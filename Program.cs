@@ -180,6 +180,34 @@
             Console.WriteLine($"{player.Name}");
 
             /* -------------------------------------------------------------------------------------------- */
+
+            /* Difference b/w struct and class */
+
+            // Struct is Value types
+            // Class is Reference types
+
+            // Value type example
+            ManStruct manStruct1 = new();
+            ManStruct manStruct2 = new();
+            manStruct1.Age = 10;
+            Console.WriteLine(manStruct1.Age);
+
+            manStruct2 = manStruct1;                // Here the value of manStruct1 is copied to manStruct2. 
+            manStruct2.Age = 20;                    // This only changes valu of manStruct2
+            Console.WriteLine($"{manStruct1.Age} {manStruct2.Age}");
+
+
+            // Reference type example
+            ManClass manClass1 = new();
+            ManClass manClass2 = new();
+            manClass1.Age = 10;
+            Console.WriteLine(manClass1.Age);
+
+            manClass2 = manClass1;                  // Here the reference of manStruct1 is copied to manStruct2.
+            manClass2.Age = 20;                     // Changing value of manStruct2 also affects value in manStruct1, since both are referencing the same memory.
+            Console.WriteLine($"{manClass1.Age} {manClass2.Age}");
+
+            /* -------------------------------------------------------------------------------------------- */
         }
 
         /* -------------------------------------------------------------------------------------------- */
@@ -234,6 +262,8 @@
             public string Name { get; set; }
             public int Health { get; set; }
         }
+
+        struct ManStruct { public int Age { get; set; } }
 
         /* -------------------------------------------------------------------------------------------- */
     }
@@ -320,4 +350,7 @@
             Console.WriteLine($"{this.type} {this.hasWheels}");     // Can only access public & protected values
         }
     }
+
+    class ManClass { public int Age { get; set; } }
+
 }
