@@ -85,6 +85,27 @@
                 Console.Write(isOk);
             }
 
+            /* -------------------------------------------------------------------------------------------- */
+
+            /* String Operations */
+
+            hello = "he" + "alo" + 3;               // Concatination
+            hello = $"{hello} , {str}";             // Interpolation
+
+            /* -------------------------------------------------------------------------------------------- */
+
+            /* Built- In Methods */
+
+            // Arithmetic
+            precision = Math.Floor(precision);
+            fraction = Math.Pow(2, 3);
+
+            // String
+            age = Convert.ToInt32("25");
+
+            Console.WriteLine($"{precision} {fraction} {age}");
+
+            /* -------------------------------------------------------------------------------------------- */
         }
     }
 }
