@@ -131,6 +131,17 @@
 
             Console.WriteLine($"{carName} {foo} {hasWheels} {vehicleObj.GetName()} {vehicleObj2.GetName()}");
 
+
+            // Inherited Class Objects
+            Van vanObj = new();
+            vanObj.SetName("Boro");                         // Get attribute of class Vehicle through inheritance
+
+            // Set attribute using set keyword
+            vanObj.NoOfWheels = 4;
+            vanObj.NoOfSeats = 10;
+
+            Console.WriteLine($"{vanObj.GetName()} {vanObj.NoOfWheels} {vanObj.NoOfSeats}");
+
             /* -------------------------------------------------------------------------------------------- */
         }
 
@@ -232,4 +243,34 @@
     }
 
     /* -------------------------------------------------------------------------------------------- */
+
+    /* Inheritance */
+    // Single Inheritance
+    class Van : Vehicle
+    {
+        private int noOfWheels;
+        private int noOfSeats;
+
+        // Getter and Setter for the attributes noOfWheels using get & set keywords
+        // No need to add getNoOfWheels and setNoOfWheels functions
+        public int NoOfWheels
+        {
+            get
+            {
+                return noOfWheels;
+            }
+            set
+            {
+                noOfWheels = value;
+            }
+        }
+
+        // Another Method to perform get set
+        public int NoOfSeats { get; set; }
+
+        public void PrintValues()
+        {
+            Console.WriteLine($"{this.type} {this.hasWheels}");     // Can only access public & protected values
+        }
+    }
 }
