@@ -148,10 +148,6 @@ namespace CSharp
 
             /* Objects */
 
-            // Static functions doesn't need to create an object
-            Program.SecretFunction();                                       // A way to call a non static method in same class
-
-
             // -------------- Object Instantiation --------------
             Vehicle vehicleObj = new();                                     // Creating an object of the class
             Vehicle vehicleObj2 = new("Bus", "4-Vehicle");
@@ -165,6 +161,11 @@ namespace CSharp
 
             Console.WriteLine($"{carName} {foo} {hasWheels} {vehicleObj.GetName()} {vehicleObj2.GetName()}");
 
+            // Static functions doesn't need to create an object
+            // To Call non static function in same class,
+            // you need to create an object of the class
+            Program program = new Program();
+            program.SecretFunction();                                       // A way to call a non static method in same class
 
             // Inherited Class Objects
             Van vanObj = new();
@@ -474,6 +475,18 @@ namespace CSharp
 
             /* ############################################################################################ */
 
+            /* Events and Event Handling */
+
+            Console.WriteLine("Press A to simulate a button click");
+            var key = Console.ReadLine();
+
+            if (key == "a")
+                keyPressed();
+            else
+                keyPressed2();
+
+            /* ############################################################################################ */
+
             /* Http Client */
             // Program program = new();
             // await program.GetTodoItems();
@@ -519,7 +532,7 @@ namespace CSharp
         }
 
         // Non Static Function
-        static void SecretFunction()
+        void SecretFunction()
         {
             Console.WriteLine("Found secret function");
         }
@@ -530,6 +543,27 @@ namespace CSharp
             Console.WriteLine($"Preparing {foodName} ...");
             await Task.Delay(3000);                             // Waits for the process to end. Delays for 3 sec.
             Console.WriteLine($"{foodName} is Ready");
+        }
+
+        /* ############################################################################################ */
+
+        /* Event handling fucntions */
+        static void keyPressed()
+        {
+            Button button = new Button();
+
+            // Passing a event that is executed when event occurs
+            button.ClickEvent += (src, args) => { Console.WriteLine("Clicked a button"); };
+            button.OnClick();       // Calling the event handling function
+        }
+
+        static void keyPressed2()
+        {
+            Button button = new Button();
+            // Passing a event that is executed when event occurs and 
+            // displaying the custom arguements
+            button.ClickEvent2 += (src, args) => { Console.WriteLine($"Clicked a button {args.Name}"); };
+            button.OnClick2();      // Calling the event handling function
         }
 
         /* ############################################################################################ */
@@ -667,6 +701,33 @@ namespace CSharp
     {
         public required string Title { get; set; }
         public double Price { get; set; }
+    }
+
+    /* ############################################################################################ */
+
+    /* Classes for Event handling */
+    public class Button
+    {
+        public EventHandler ClickEvent;                         // Standard event definition
+        public EventHandler<MyCustomArguments> ClickEvent2;     // Event definition with custom Arguements
+
+        public void OnClick()                                   // Event Handlers
+        {
+            ClickEvent.Invoke(this, EventArgs.Empty);
+
+        }
+
+        public void OnClick2()                                  // Event Handlers
+        {
+            MyCustomArguments myArgs = new() { Name = "Aster" };
+            ClickEvent2.Invoke(this, myArgs);
+        }
+    }
+
+    // Class that specifies the Custom Arguements for Events
+    public class MyCustomArguments : EventArgs              // Inherits EventArgs 
+    {
+        public string Name { get; set; }
     }
 
     /* ############################################################################################ */
