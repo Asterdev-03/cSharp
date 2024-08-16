@@ -487,6 +487,17 @@ namespace CSharp
 
             /* ############################################################################################ */
 
+            /* Delegates */
+
+            Iterating1 iterating1 = new Iterating1();
+            iterating1.IterateThroughNumbers();         // Without Delegate
+
+            Iterating2 iterating2 = new Iterating2();
+            iterating2.IterateThroughNumbers(myHome);
+
+
+            /* ############################################################################################ */
+
             /* Http Client */
             // Program program = new();
             // await program.GetTodoItems();
@@ -576,6 +587,18 @@ namespace CSharp
             // displaying the custom arguements
             button.ClickEvent2 += (src, args) => { Console.WriteLine($"Clicked a button {args.Name}"); };
             button.OnClick2();      // Calling the event handling function
+        }
+
+        /* ############################################################################################ */
+
+        /* Function used by delegate */
+
+        static void myHome(int finalCount)
+        {
+            if (finalCount > 9990 && finalCount < 10000)
+            {
+                Console.WriteLine("Thats a veryyyy big number");
+            }
         }
 
         /* ############################################################################################ */
@@ -784,6 +807,44 @@ namespace CSharp
         public string MakeSound()
         {
             return "Meeoowwww";
+        }
+    }
+
+    /* ############################################################################################ */
+
+    /* Delegates */
+
+    // Class without delegate
+    class Iterating1
+    {
+        public void IterateThroughNumbers()
+        {
+            var count = 0;
+            while (count < 100000)
+            {
+                count++;
+                if (count > 9990 && count < 10000)
+                {
+                    Console.WriteLine("Thats a big number");
+                }
+            }
+        }
+    }
+
+    // Class with delegate
+    class Iterating2
+    {
+        // Create a delegate with the information it required
+        public delegate void MyDelegate(int passedCount);
+
+        public void IterateThroughNumbers(MyDelegate myDelegate)    // Give access to the delegate
+        {
+            var count = 0;
+            while (count < 100000)
+            {
+                count++;
+                myDelegate(count);                                  // Pass the value back to delegate
+            }
         }
     }
 
