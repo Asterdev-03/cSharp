@@ -125,6 +125,18 @@ namespace CSharp
 
             /* ############################################################################################ */
 
+            /* Type Casting */
+            double temp = 67.234;
+            int newTemp = (int)temp;
+
+            string s = "123";
+            // int newS = (int) s;               // Cannot convert string to int like this, Use Convert method
+            int newS = Convert.ToInt32(s);
+
+            Console.WriteLine($"{temp} {newTemp} {s} {newS}");
+
+            /* ############################################################################################ */
+
             /* Dynamic vs Var */
 
 
