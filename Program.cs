@@ -493,8 +493,9 @@ namespace CSharp
             iterating1.IterateThroughNumbers();         // Without Delegate
 
             Iterating2 iterating2 = new Iterating2();
-            iterating2.IterateThroughNumbers(myHome);
+            iterating2.IterateThroughNumbers(MyHome);
 
+            iterating2.LambdaFuncExample();
 
             /* ############################################################################################ */
 
@@ -593,7 +594,7 @@ namespace CSharp
 
         /* Function used by delegate */
 
-        static void myHome(int finalCount)
+        static void MyHome(int finalCount)
         {
             if (finalCount > 9990 && finalCount < 10000)
             {
@@ -836,6 +837,7 @@ namespace CSharp
     {
         // Create a delegate with the information it required
         public delegate void MyDelegate(int passedCount);
+        public delegate void MyDelegate2(string s, int i);
 
         public void IterateThroughNumbers(MyDelegate myDelegate)    // Give access to the delegate
         {
@@ -845,6 +847,18 @@ namespace CSharp
                 count++;
                 myDelegate(count);                                  // Pass the value back to delegate
             }
+        }
+
+        public void LambdaFuncExample()
+        {
+            // No need to create extra function like MyHome()
+            // Instead use lambda functions
+            MyDelegate2 myDelegate2 = (s, i) =>                     // Takes the same parameters specified in delegate definition
+            {
+                Console.WriteLine($"Hello from delegate {s} {i}");  // Lambda/Anonymous Function
+            };
+
+            myDelegate2.Invoke("BOB", 0);                           // Invoking the delegate function
         }
     }
 
