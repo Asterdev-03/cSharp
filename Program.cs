@@ -547,6 +547,18 @@ namespace CSharp
 
         /* ############################################################################################ */
 
+        /* Struct in C# */
+
+        struct Player
+        {
+            public string Name { get; set; }
+            public int Health { get; set; }
+        }
+
+        struct ManStruct { public int Age { get; set; } }
+
+        /* ############################################################################################ */
+
         /* Event handling fucntions */
         static void keyPressed()
         {
@@ -565,18 +577,6 @@ namespace CSharp
             button.ClickEvent2 += (src, args) => { Console.WriteLine($"Clicked a button {args.Name}"); };
             button.OnClick2();      // Calling the event handling function
         }
-
-        /* ############################################################################################ */
-
-        /* Struct in C# */
-
-        struct Player
-        {
-            public string Name { get; set; }
-            public int Health { get; set; }
-        }
-
-        struct ManStruct { public int Age { get; set; } }
 
         /* ############################################################################################ */
 
